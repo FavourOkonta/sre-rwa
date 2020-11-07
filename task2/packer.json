@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": ""
+  },
+  
+  "builders": [
+        {
+            "type": "amazon-ebs",
+            "instance_type": "t2.micro",
+            "region": "us-east-1",
+            "source_ami": "ami-0947d2ba12ee1ff75",
+            "ssh_username": "ec2-user",
+            "ami_name": "Task2"
+        }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "./app",
+      "destination": "~/app"
+    },
+
+    {
+      "type": "file",
+      "source": "hello_world.sql",
+      "destination": "~/hello_world.sql"
+    }
+  ]
+}
